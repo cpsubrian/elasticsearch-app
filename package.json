@@ -1,0 +1,27 @@
+{
+  "author": "Your name here",
+  "name": "search-app",
+  "description": "Search App",
+  "version": "0.0.0",
+  "private" : true,
+  "main": "./lib/app.js",
+  "scripts": {
+    "test": "make test",
+    "start": "./bin/app"
+  },
+  "dependencies": {
+    "cantina": "git+ssh://git@github.com:cantina/cantina.git",
+    "cantina-static": "git+ssh://git@github.com:cantina/cantina-static.git",
+    "cantina-views": "git+ssh://git@github.com:cantina/cantina-views.git",
+    "cantina-socketio": "git+ssh://git@github.com:cantina/cantina-socketio.git",
+    "pkginfo": "~0.2.3",
+    "union": "~0.3.0",
+    "handlebars": "~1.0.5beta"
+  },
+  "devDependencies": {
+    "mocha": "~1.0.3"
+  },
+  "engines": {
+    "node": ">= 0.6.0"
+  }
+}

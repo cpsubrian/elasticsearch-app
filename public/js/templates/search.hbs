@@ -1,0 +1,37 @@
+<div id="search-options">
+    <div id="search-text-form">
+        <form class="search-form">
+            <label for="search-text">Search:</label>
+            <input type="text" class="text" id="search-text" name="search"/>
+        </form>
+    </div>
+
+    <div class="filter-list">
+        <h3>Show Only:</h3>
+        <form>
+            <input type="radio" class="filter-select" name="filter" value="all" checked="checked">All Categories</input>
+            <input type="radio" class="filter-select" name="filter" value="groups">Groups</input>
+            <input type="radio" class="filter-select" name="filter" value="events">Events</input>
+            <input type="radio" class="filter-select" name="filter" value="people">People</input>
+        </form>
+    </div>
+
+    <div id="sorter-list">
+        <h3>Sort By:</h3>
+        <form>
+            <input type="radio" class="sorter-select" name="sorter" value="relevance" checked="checked">Relevance</input>
+            <input type="radio" class="sorter-select" name="sorter" value="distance">Distance</input>
+        </form>
+    </div>
+
+    {{#if facets}}
+    <div id="facet-list">
+        <h3>Facets:</h3>
+        <ul>
+            {{#each facets}}
+            <li><a href="" class="facet" id={{this.name}}>{{this.name}}&nbsp;({{this.count}})</a></li>
+            {{/each}}
+        </ul>
+    </div>
+    {{/if}}
+</div>

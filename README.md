@@ -1,4 +1,4 @@
-elasticsearch-app
-=================
+Search App
+===============
 
-Chaplin App for running search queries powered by ElasticSearch
+Powered by Cantina
