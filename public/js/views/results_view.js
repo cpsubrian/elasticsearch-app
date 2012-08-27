@@ -12,9 +12,9 @@ define([
   var ResultsView = CollectionView.extend({
 
     template: template,
-    listSelector: 'ul',
+    id:"result-list",
     container: '#page-container',
-    autoRender: true,
+    listSelector: 'ul',
 
     initialize: function(options){
       ResultsView.__super__.initialize.apply(this, arguments);
@@ -30,9 +30,7 @@ define([
 
       var self = this;
       socket.on('results', function(data){
-        for (var i in data){
-          self.collection.add(new Result(data[i]));
-        }
+        self.collection.reset(data);
       });
     },
 

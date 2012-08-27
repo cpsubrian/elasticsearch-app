@@ -4,8 +4,7 @@ define([
   'use strict';
 
   var Result = Model.extend({
-    name: 'result',
-    results: [],
+    name: 'default-result',
 
     constructor: function(attrs){
       Result.__super__.constructor.apply(this, arguments);

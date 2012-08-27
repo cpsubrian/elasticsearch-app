@@ -6,7 +6,8 @@ define([
 
   var ResultCollection = Collection.extend({
     name: 'results',
-    model: Result
+    model: Result,
+    results: []
   });
 
   return ResultCollection;
