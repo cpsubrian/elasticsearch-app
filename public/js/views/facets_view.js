@@ -41,12 +41,17 @@ define([
         if(data.facets){
 
           //Preserve selection
+          //This can probably be done a better way
           var selection = self.model.get('selected');
           for(var i in data.facets){
-            if(_.indexOf(selection, data.facets[i].name) != -1){
-              for(var j in data.facets[i].values){
-                if(_.indexOf(selection[data.facets[i].name], data.facets[i].values[j].term) != -1){
-                  data.facets[i].values[j].selected = true;
+            for(var name in selection){
+              if(data.facets[i].name === name){
+                for(var j in selection[name]){
+                  for(var k in data.facets[i].values){
+                    if (data.facets[i].values[k].term === selection[name][j]){
+                      data.facets[i].values[k].selected = true;
+                    }
+                  }
                 }
               }
             }
