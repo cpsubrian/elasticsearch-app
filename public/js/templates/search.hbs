@@ -26,12 +26,14 @@
 {{#if options_facets}}
 <div id="facet-list">
     <h3>Facets:</h3>
-    <form>
         {{#each options_facets}}
-        <p>{{this.name}}<br/>
+        <p>
+        <label for={{this.name}}>{{this.name}}</label>
+        <form id={{this.idx}}>
             {{#each this.values}}
-            <input type="checkbox" class="facet" value={{this.term}}>{{this.term}}&nbsp;({{this.count}})</input>
+            <input type="checkbox" class="facet-select" value={{this.idx}}>{{this.term}}&nbsp;({{this.count}})</input>
             {{/each}}
+        </form>
         </p>
         {{/each}}
     </form>

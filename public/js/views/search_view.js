@@ -31,9 +31,9 @@ define([
       this.delegate('submit', 'form', this.onSubmit);
       this.delegate('click', '.filter-select', this.onSelectFilter);
       this.delegate('click', '.sorter-select', this.onSelectSorter);
-      this.delegate('click', '.facet', this.onSelectFacet);
+      this.delegate('click', '.facet-select', this.onSelectFacet);
 
-      this.modelBind('change:options_facets change:name', this.render);
+      this.modelBind('change:options_facets', this.render);
 
       this.setup();
     },
@@ -41,9 +41,8 @@ define([
     setup : function(){
       var self = this;
       Chaplin.mediator.subscribe('results', function(data){
-        var result = self.model.set('options_facets', data.facets);
-        if(!result)
-          throw "Error!";
+        if(data.facets)
+          self.model.set('options_facets', data.facets);
       });
     },
 
@@ -69,8 +68,23 @@ define([
     },
 
     onSelectFacet: function(e){
+
+      //Get IDs of selected (facet, value) pair
+      var facetIdx = e.target.form.id;
+      var selectedIndex = e.target.value;
+
+      //Lookup string values
+      var options = this.model.get('options_facets');
+      var facetName = options[facetIdx].name;
+      var facetVal = options[facetIdx].values[selectedIndex].term;
+
+      //Add to selected list
       var selectedFacets = this.model.get('facets');
-      selectedFacets.push(e.target.value);
+      if(!selectedFacets[facetName])
+        selectedFacets[facetName] = [];
+      selectedFacets[facetName].push(facetVal);
+
+      //Submit new search
       this.model.set('facets', selectedFacets);
       this.model.submit();
     }

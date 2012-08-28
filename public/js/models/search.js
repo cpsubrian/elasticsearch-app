@@ -10,7 +10,7 @@ define([
       text : '',
       filter: 'all',
       sorter: 'relevance',
-      facets: [],
+      facets: {},
       options_facets: []
     },
 
