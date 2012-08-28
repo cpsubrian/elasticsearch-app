@@ -10,12 +10,7 @@ define([
       text : '',
       filter: 'all',
       sorter: 'relevance',
-      facets: {},
-      options_facets: []
-    },
-
-    submit: function(){
-        socket.emit('search', this.toJSON());
+      facets: null
     }
 
   });

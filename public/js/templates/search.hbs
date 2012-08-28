@@ -22,20 +22,3 @@
         <input type="radio" class="sorter-select" name="sorter" value="distance">Distance</input>
     </form>
 </div>
-
-{{#if options_facets}}
-<div id="facet-list">
-    <h3>Facets:</h3>
-        {{#each options_facets}}
-        <p>
-        <label for={{this.name}}>{{this.name}}</label>
-        <form id={{this.idx}}>
-            {{#each this.values}}
-            <input type="checkbox" class="facet-select" value={{this.idx}}>{{this.term}}&nbsp;({{this.count}})</input>
-            {{/each}}
-        </form>
-        </p>
-        {{/each}}
-    </form>
-</div>
-{{/if}}

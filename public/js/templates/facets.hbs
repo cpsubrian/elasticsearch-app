@@ -1,0 +1,14 @@
+{{#if options}}
+    <h3>Facets:</h3>
+    {{#each options}}
+        {{this.name}}:
+        <form class="facet-form" id={{this.idx}}>
+            {{#each this.values}}
+            <input type="checkbox" class="facet-select" value={{this.idx}} {{#if this.selected}} checked="checked" {{/if}}>
+                {{this.term}}&nbsp;({{this.count}})
+            </input>
+            {{/each}}
+        </form>
+        <br/>
+    {{/each}}
+{{/if}}

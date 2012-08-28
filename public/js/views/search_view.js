@@ -1,11 +1,12 @@
 define([
   'base/view',
   'chaplin',
-  'handlebars',
+  'views/facets_view',
   'models/search',
   'text!templates/search.hbs',
-  "jquery"
-], function(View, Chaplin, Handlebars, Search, template, $) {
+  'lib/socket',
+  'underscore'
+], function(View, Chaplin, FacetsView, Search, template, socket, _) {
   'use strict';
 
   var SearchView = View.extend({
@@ -20,8 +21,10 @@ define([
     containerMethod: 'prepend',
 
     initialize: function(options){
-      this.model = new Search();
       SearchView.__super__.initialize.apply(this, arguments);
+      var self = this;
+      self.model = new Search();
+      self.subview('facets', new FacetsView());
     },
 
 
@@ -31,62 +34,35 @@ define([
       this.delegate('submit', 'form', this.onSubmit);
       this.delegate('click', '.filter-select', this.onSelectFilter);
       this.delegate('click', '.sorter-select', this.onSelectSorter);
-      this.delegate('click', '.facet-select', this.onSelectFacet);
-
-      this.modelBind('change:options_facets', this.render);
 
       this.setup();
     },
 
-    setup : function(){
+    setup: function(){
       var self = this;
-      Chaplin.mediator.subscribe('results', function(data){
-        if(data.facets)
-          self.model.set('options_facets', data.facets);
+     Chaplin.mediator.subscribe('facets-selected', function(facets_selected){
+        self.model.set('facets', facets_selected, {silent: true});
+        self.submitSearch();
       });
+      self.modelBind('change:text change:filter change:sorter change:facets', self.submitSearch);
+
     },
 
-    render : function(){
-      var renderTemp = Handlebars.compile(template);
-      $(this.el).html(renderTemp(this.model.toJSON()));
+    submitSearch: function(){
+      socket.emit('search', this.model.toJSON());
     },
 
     onSubmit: function(e){
       this.model.set('text', e.target.elements[0].value);
       e.preventDefault();
-      this.model.submit();
     },
 
     onSelectFilter: function(e){
       this.model.set('filter', e.target.value);
-      this.model.submit();
     },
 
     onSelectSorter: function(e){
       this.model.set('sorter', e.target.value);
-      this.model.submit();
-    },
-
-    onSelectFacet: function(e){
-
-      //Get IDs of selected (facet, value) pair
-      var facetIdx = e.target.form.id;
-      var selectedIndex = e.target.value;
-
-      //Lookup string values
-      var options = this.model.get('options_facets');
-      var facetName = options[facetIdx].name;
-      var facetVal = options[facetIdx].values[selectedIndex].term;
-
-      //Add to selected list
-      var selectedFacets = this.model.get('facets');
-      if(!selectedFacets[facetName])
-        selectedFacets[facetName] = [];
-      selectedFacets[facetName].push(facetVal);
-
-      //Submit new search
-      this.model.set('facets', selectedFacets);
-      this.model.submit();
     }
   });
 
