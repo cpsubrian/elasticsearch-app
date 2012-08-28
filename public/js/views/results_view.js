@@ -30,7 +30,8 @@ define([
 
       var self = this;
       socket.on('results', function(data){
-        self.collection.reset(data);
+        Chaplin.mediator.publish('results', data);
+        self.collection.reset(data.results);
       });
     },
 
