@@ -5,8 +5,8 @@ define([
   'models/search',
   'text!templates/search.hbs',
   'lib/socket',
-  'underscore'
-], function(View, Chaplin, FacetsView, Search, template, socket, _) {
+  'jquery'
+], function(View, Chaplin, FacetsView, Search, template, socket, $) {
   'use strict';
 
   var SearchView = View.extend({
@@ -40,11 +40,17 @@ define([
 
     setup: function(){
       var self = this;
-     Chaplin.mediator.subscribe('facets-selected', function(facets_selected){
+      Chaplin.mediator.subscribe('facets-selected', function(facets_selected){
         self.model.set('facets', facets_selected, {silent: true});
         self.submitSearch();
       });
-      self.modelBind('change:text change:filter change:sorter change:facets', self.submitSearch);
+      Chaplin.mediator.subscribe('page', function(options){
+        var desiredIndex = options.page * options.resultsPerPage;
+        self.model.set({fromIndex: desiredIndex, resultsPerPage: options.resultsPerPage});
+      });
+
+      self.modelBind('change:text change:filter ' +
+        'change:sorter change:fromIndex change:resultsPerPage', self.submitSearch);
 
     },
 

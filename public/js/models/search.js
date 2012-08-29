@@ -1,7 +1,6 @@
 define([
-  'base/model',
-  'lib/socket'
-], function(Model, socket) {
+  'base/model'
+], function(Model) {
   'use strict';
 
   var Search = Model.extend({
@@ -10,6 +9,8 @@ define([
       text : '',
       filter: 'all',
       sorter: 'relevance',
+      fromIndex: 0,
+      resultsPerPage: 10,
       facets: null
     }
 
