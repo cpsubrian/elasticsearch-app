@@ -64,6 +64,18 @@ define([
     },
 
     onSelectFilter: function(e){
+      //Show/hide relevant search options
+      if(e.target.value === 'people'){
+        $('#sorter-list-article').css('display', 'none');
+        $('#sorter-list-person').css('display', 'block');
+      }else if (e.target.value === 'articles'){
+        $('#sorter-list-article').css('display', 'block');
+        $('#sorter-list-person').css('display', 'none');
+      }else {
+        $('#sorter-list-article').css('display', 'none');
+        $('#sorter-list-person').css('display', 'none');
+      }
+
       this.model.set('filter', e.target.value);
     },
 
