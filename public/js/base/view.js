@@ -1,6 +1,7 @@
 define(function(require) {
   'use strict';
   var Chaplin = require('chaplin');
+  var Handlebars = require('handlebars');
 
   var View = Chaplin.View.extend({
 
