@@ -1,9 +1,9 @@
-define([
-  'handlebars',
-  'chaplin',
-  'lib/utils'
-], function(Handlebars, Chaplin, utils) {
+define(function(require) {
   'use strict';
+
+  var Handlebars = require('handlebars'),
+    Chaplin = require('chaplin'),
+    utils = require('lib/utils');
 
   // View helpers (Handlebars in this case)
   // --------------------------------------

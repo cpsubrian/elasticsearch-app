@@ -1,10 +1,7 @@
-define([
-  'base/view',
-  'chaplin',
-  'models/result',
-  'text!templates/result.hbs'
-], function(View, Chaplin, Result, template) {
+define(function(require) {
   'use strict';
+  var View = require('base/view'),
+    template = require('text!templates/result.hbs');
 
   var ResultView = View.extend({
 

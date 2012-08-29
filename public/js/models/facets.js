@@ -1,8 +1,6 @@
-define([
-  'base/model',
-  'lib/socket'
-], function(Model) {
+define(function(require) {
   'use strict';
+  var Model = require('base/model');
 
   var Facets = Model.extend({
     defaults: {

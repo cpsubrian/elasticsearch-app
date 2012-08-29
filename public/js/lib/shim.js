@@ -1,8 +1,10 @@
 /**
  * Adds shims for browser-specific javascript functionality.
  */
-define(['jquery'], function($) {
+define(function(require) {
   'use strict';
+
+  var $ = require('jquery');
 
   if(!String.prototype.trim) {
     String.prototype.trim = function () {

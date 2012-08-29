@@ -1,7 +1,6 @@
-define([
-  'base/model'
-], function(Model) {
+define(function(require) {
   'use strict';
+  var Model = require('base/model');
 
   var Search = Model.extend({
     defaults: {

@@ -1,8 +1,7 @@
-define([
-  'base/controller',
-  'views/home_view'
-], function(Controller, HomeView) {
+define(function(require) {
   'use strict';
+  var Controller = require('base/controller'),
+    HomeView = require('views/home_view');
 
 	var HomeController = Controller.extend({
 

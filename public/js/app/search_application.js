@@ -1,9 +1,9 @@
-define([
-  'chaplin',
-  'views/layout',
-  'app/routes'
-], function(Chaplin, Layout, routes) {
+define(function(require){
   'use strict';
+
+  var Chaplin = require('chaplin'),
+    Layout = require('views/layout'),
+    routes = require('app/routes');
 
   // The application object
   // Choose a meaningful name for your application

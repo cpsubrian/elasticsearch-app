@@ -1,7 +1,6 @@
-define([
-  'chaplin'
-], function(Chaplin) {
+define(function(require) {
   'use strict';
+  var Chaplin = require('chaplin');
 
   var Model = Chaplin.Model.extend({
     // Place your application-specific model features here

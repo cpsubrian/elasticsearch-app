@@ -1,9 +1,6 @@
-define([
-  'handlebars',
-  'chaplin',
-  'lib/view_helper' // Just load the view helpers, no return value
-], function(Handlebars, Chaplin) {
+define(function(require) {
   'use strict';
+  var Chaplin = require('chaplin');
 
   var View = Chaplin.View.extend({
 

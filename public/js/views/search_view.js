@@ -1,13 +1,12 @@
-define([
-  'base/view',
-  'chaplin',
-  'views/facets_view',
-  'models/search',
-  'text!templates/search.hbs',
-  'lib/socket',
-  'jquery'
-], function(View, Chaplin, FacetsView, Search, template, socket, $) {
+define(function(require) {
   'use strict';
+  var View = require('base/view'),
+    Chaplin = require('chaplin'),
+    FacetsView = require('views/facets_view'),
+    Search = require('models/search'),
+    template = require('text!templates/search.hbs'),
+    socket = require('lib/socket'),
+    $ = require('jquery');
 
   var SearchView = View.extend({
 

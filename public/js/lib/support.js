@@ -1,14 +1,15 @@
-define([
-  'underscore',
-  'lib/utils',
-  'chaplin'
-], function(_, utils, Chaplin) {
+define(function(require) {
+  'use strict';
+
+  var _ = require('underscore'),
+    utils = require('lib/utils'),
+    Chaplin = require('chaplin');
 
   // Application-specific feature detection
   // --------------------------------------
 
   // Delegate to Chaplin’s support module
-  support = utils.beget(Chaplin.support);
+  var support = utils.beget(Chaplin.support);
 
   // Add additional application-specific properties and methods
 

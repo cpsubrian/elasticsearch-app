@@ -1,13 +1,12 @@
-define([
-  'base/view',
-  'chaplin',
-  'handlebars',
-  'models/facets',
-  'text!templates/facets.hbs',
-  "jquery",
-  "underscore"
-], function(View, Chaplin, Handlebars, Facets, template, $, _) {
+define(function(require) {
   'use strict';
+  var View = require('base/view'),
+    Chaplin = require('chaplin'),
+    Handlebars = require('handlebars'),
+    Facets = require('models/facets'),
+    template = require('text!templates/facets.hbs'),
+    $ = require('jquery'),
+    _ = require('underscore');
 
   var FacetsView = View.extend({
 

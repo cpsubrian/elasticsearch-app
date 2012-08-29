@@ -1,14 +1,11 @@
-define([
-  'base/collection_view',
-  'chaplin',
-  'views/result_view',
-  'models/result',
-  'models/result_collection',
-  'text!templates/results.hbs',
-  'lib/socket',
-  'jquery'
-], function(CollectionView, Chaplin, ResultView, Result, ResultCollection, template, socket, $) {
+define(function(require) {
   'use strict';
+  var CollectionView = require('base/collection_view'),
+    Chaplin = require('chaplin'),
+    ResultView = require('views/result_view'),
+    template = require('text!templates/results.hbs'),
+    socket = require('lib/socket'),
+    $ = require('jquery');
 
   var ResultsView = CollectionView.extend({
 

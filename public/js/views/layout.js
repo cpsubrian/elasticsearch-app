@@ -1,7 +1,6 @@
-define([
-  'chaplin'
-], function(Chaplin) {
+define(function(require) {
   'use strict';
+  var Chaplin = require('chaplin');
 
   var Layout = Chaplin.Layout.extend({
 

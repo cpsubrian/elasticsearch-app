@@ -1,8 +1,6 @@
-define([
-  'chaplin',
-  'base/view'
-], function(Chaplin, View) {
+define(function(require) {
   'use strict';
+  var Chaplin = require('chaplin');
 
   var CollectionView = Chaplin.CollectionView.extend({
 
