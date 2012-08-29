@@ -45,7 +45,7 @@ define([
         self.submitSearch();
       });
       Chaplin.mediator.subscribe('page', function(options){
-        var desiredIndex = options.page * options.resultsPerPage;
+        var desiredIndex = (options.page-1) * options.resultsPerPage;
         self.model.set({fromIndex: desiredIndex, resultsPerPage: options.resultsPerPage});
       });
 

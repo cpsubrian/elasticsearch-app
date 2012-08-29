@@ -1,18 +1,26 @@
-<p class="result">
+<div class="result">
     {{#if person}}
         Name:&nbsp;{{name}}<br/>
         About:&nbsp;{{tag_line}}<br/>
         Connections:&nbsp;{{connections}}<br/>
-        Regions:&nbsp;{{regions}}<br/>
-        Issues:&nbsp;{{issues}}<br/>
+        Regions:<ul>{{#each regions}}
+            <li>{{this}}</li>
+            {{/each}}</ul><br/>
+        Issues:<ul>{{#each issues}}
+            <li>{{this}}</li>
+            {{/each}}</ul><br/>
     {{/if}}
     {{#if article}}
         Title:&nbsp;{{title}}<br/>
         Body:&nbsp;{{text}}<br/>
         Date:&nbsp;{{date}}<br/>
-        Sections:&nbsp;{{sections}}<br/>
-        Tags:&nbsp;{{tags}}<br/>
+        Sections:<ul>{{#each sections}}
+            <li>{{this}}</li>
+        {{/each}}</ul><br/>
+        Tags:<ul>{{#each tags}}
+            <li>{{this}}</li>
+            {{/each}}</ul><br/>
         Url:&nbsp;{{url}}<br/>
         Fee:&nbsp;{{fee}}<br/>
     {{/if}}
-</p>
+</div>

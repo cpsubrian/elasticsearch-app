@@ -16,6 +16,7 @@ define([
     id:"result-list",
     container: '#page-container',
     listSelector: 'ul',
+    resultsPerPage: 10,
 
 
     from: 0,
@@ -44,15 +45,14 @@ define([
 
         //Write pagination
         //Placeholder: I know this can probably be done a better way
-        var count = data.results.length;
-        self.from = (data.page - 1) * count + 1;
-        self.to = self.from + count - 1;
+        self.from = (data.page - 1) * self.resultsPerPage + 1;
+        self.to = self.from + data.results.length - 1;
         var total = data.total;
         $('#result-count').html('Showing ' + self.from + '-' + self.to + ' of ' + total);
-        if(count < total){
-          var pages = total/count;
+        if(self.from < total){
+          var pages = total/self.resultsPerPage;
           var ul = "<ul>";
-          for(var i=1; i<pages; i++){
+          for(var i=1; i<pages+1; i++){
             var li;
             if(i === data.page){
               li = '<li style="display: inline"><a class="page">' + i + '</a></li>&nbsp;&nbsp;&nbsp;';
@@ -75,7 +75,7 @@ define([
     onPageClick: function(e){
       e.preventDefault();
       var page = e.target.innerHTML;
-      Chaplin.mediator.publish('page', {page: page, resultsPerPage: this.to - this.from + 1});
+      Chaplin.mediator.publish('page', {page: page, resultsPerPage: this.resultsPerPage});
     }
 
   });
