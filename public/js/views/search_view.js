@@ -40,7 +40,7 @@ define(function(require) {
     setup: function(){
       var self = this;
       Chaplin.mediator.subscribe('facets-selected', function(facets_selected){
-        self.model.set('facets', facets_selected, {silent: true});
+        self.model.set({facets: facets_selected, fromIndex: 0}, {silent: true});
         self.submitSearch();
       });
       Chaplin.mediator.subscribe('page', function(options){
@@ -58,7 +58,7 @@ define(function(require) {
     },
 
     onSubmit: function(e){
-      this.model.set('text', e.target.elements[0].value);
+      this.model.set({text: e.target.elements[0].value, fromIndex: 0});
       e.preventDefault();
     },
 
@@ -75,11 +75,11 @@ define(function(require) {
         $('#sorter-list-person').css('display', 'none');
       }
 
-      this.model.set('filter', e.target.value);
+      this.model.set({filter: e.target.value, fromIndex: 0});
     },
 
     onSelectSorter: function(e){
-      this.model.set('sorter', e.target.value);
+      this.model.set({sorter: e.target.value, fromIndex: 0});
     }
   });
 
