@@ -2,6 +2,7 @@ define(function(require) {
   'use strict';
   var Chaplin = require('chaplin');
   var Handlebars = require('handlebars');
+  var view_helpers = require('lib/view_helper');
 
   var View = Chaplin.View.extend({
 

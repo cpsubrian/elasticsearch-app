@@ -62,6 +62,8 @@ define(function(require){
       // Create a user property
       Chaplin.mediator.user = null;
       // Add additional application-specific properties and methods
+      Chaplin.mediator.numPages = 1;
+      Chaplin.mediator.currentPage = 1;
       // Seal the mediator
       Chaplin.mediator.seal();
     }
