@@ -52,7 +52,6 @@ define(function(require) {
         self.from = (data.page - 1) * self.resultsPerPage + 1;
         self.to = self.from + data.results.length - 1;
         $('#result-count').html('Showing ' + self.from + '-' + self.to + ' of ' + data.total);
-        $("#pagination").css("display", "block");
         $('ol').attr('start', self.from);
 
       });
