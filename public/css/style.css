@@ -28,3 +28,7 @@ body {
     background-color: #ddd;
     border: 1px solid gray;
 }
+
+.title{
+    font-weight: bold;
+}

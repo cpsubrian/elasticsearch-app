@@ -1,28 +1,27 @@
 <div class="result">
     {{#equals type "people"}}
-        Name:&nbsp;{{name}}<br/>
-        About:&nbsp;{{tag_line}}<br/>
-        Connections:&nbsp;{{connections}}<br/>
-        Regions:<ul>{{#each regions}}
+        <span class="title person">{{name}}</span><br/>
+        <span class="text person">{{tag_line}}</span><br/>
+        <span class="text person">{{connections}}&nbsp;connections</span><br/>
+        Regions:<ul class="text person">{{#each regions}}
             <li>{{this}}</li>
             {{/each}}</ul>
-        Issues:<ul>{{#each issues}}
+        Issues:<ul class="text person">{{#each issues}}
             <li>{{this}}</li>
             {{/each}}</ul>
     <br/>
     {{/equals}}
     {{#equals type "articles"}}
-        Title:&nbsp;{{title}}<br/>
-        Body:&nbsp;{{text}}<br/>
-        Date:&nbsp;{{date}}<br/>
-        Sections:<ul>{{#each sections}}
+        <span class="title article">{{title}}</span><br/>
+    <span class="text article">Posted on&nbsp;{{date}}</span><br/>
+        <span class="text article">{{text}}</span><br/>
+        Sections:<ul class="text article">{{#each sections}}
             <li>{{this}}</li>
         {{/each}}</ul>
-        Tags:<ul>{{#each tags}}
+        Tags:<ul class="text article">{{#each tags}}
             <li>{{this}}</li>
             {{/each}}</ul>
-        Url:&nbsp;{{url}}<br/>
-        Fee:&nbsp;{{fee}}<br/>
+        <a class="text article" href={{url}}>Full Story</a><br/>
     <br/>
     {{/equals}}
 </div>
