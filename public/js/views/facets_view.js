@@ -2,7 +2,6 @@ define(function(require) {
   'use strict';
   var View = require('base/view'),
     Chaplin = require('chaplin'),
-    Handlebars = require('handlebars'),
     Facets = require('models/facets'),
     template = require('text!templates/facets.hbs'),
     $ = require('jquery'),
@@ -34,7 +33,7 @@ define(function(require) {
     setup : function(){
       var self = this;
       Chaplin.mediator.subscribe('results', function(data){
-        if(data.facets){
+        if(Object.keys(data.facets).length > 0){
 
           //Preserve selection
           var selection = self.model.get('selected');

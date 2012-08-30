@@ -20,6 +20,7 @@ define(function(require) {
       var self = this;
       self.model = new Search();
       self.subview('facets', new FacetsView());
+      self.submitSearch();
     },
 
 
