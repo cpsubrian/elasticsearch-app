@@ -28,5 +28,20 @@ define(function(require) {
 
   Handlebars.registerHelper('equals', function(lval, rval, options){
     return (lval === rval ? options.fn(this) : options.inverse(this));
-  })
+  });
+
+  Handlebars.registerHelper('facets', function(context){
+    var html = '';
+    for(var facet in context){
+      html += facet + '<form class="facet-form" id="' + facet + '">';
+      for(var name in context[facet]){
+        html += '<input type="checkbox" class="facet-select" value="' + name +'"';
+        if(context[facet][name].selected)
+          html += ' checked="checked"';
+        html += '>' + name + '&nbsp;(' + context[facet][name].count + ')</input>';
+      }
+      html += '</form>';
+    }
+    return new Handlebars.SafeString(html);
+  });
 });

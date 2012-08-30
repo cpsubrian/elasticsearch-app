@@ -40,18 +40,13 @@ define(function(require) {
         if(data.facets){
 
           //Preserve selection
-          //This can probably be done a better way
           var selection = self.model.get('selected');
-          for(var i in data.facets){
-            for(var name in selection){
-              if(data.facets[i].name === name){
-                for(var j in selection[name]){
-                  for(var k in data.facets[i].values){
-                    if (data.facets[i].values[k].term === selection[name][j]){
-                      data.facets[i].values[k].selected = true;
-                    }
-                  }
-                }
+          for(var facet in selection){
+            if(data.facets[facet]){
+              for(var i in selection[facet]){
+                var name = selection[facet][i];
+                if(data.facets[facet][name])
+                  data.facets[facet][name].selected = true;
               }
             }
           }
@@ -73,27 +68,23 @@ define(function(require) {
     onSelectFacet: function(e){
       e.stopImmediatePropagation();
 
-      //Get IDs of selected (facet, value) pair
-      var facetIdx = e.target.form.id;
-      var selectedIndex = e.target.value;
-      //Lookup string values
-      var options = this.model.get('options');
-      var facetName = options[facetIdx].name;
-      var facetVal = options[facetIdx].values[selectedIndex].term;
+      //Get selected (facet, value) pair
+      var facetName = e.target.form.id;
+      var facetVal = e.target.value;
 
-      //See if this is a select or deselect
       var selectedFacets = this.model.get('selected');
+
+      //If this value is in the selected list, this action was a deselect
       if(selectedFacets[facetName] && _.indexOf(selectedFacets[facetName], facetVal) != -1){
         //Remove from existing selected list
         selectedFacets[facetName] = _.without(selectedFacets[facetName], facetVal);
         if(selectedFacets[facetName].length == 0){
           delete selectedFacets[facetName];
         }
+      //Otherwise, add it to the list, creating a key entry if necessary
       }else if(selectedFacets[facetName]){
-        //Add to existing selected list
         selectedFacets[facetName].push(facetVal);
       }else{
-        //Create new selected list for this facet, containing the selected value
         selectedFacets[facetName] = [facetVal];
       }
 
