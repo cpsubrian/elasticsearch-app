@@ -25,4 +25,8 @@ define(function(require) {
       return new Handlebars.SafeString(ul);
     }else return '';
   });
+
+  Handlebars.registerHelper('equals', function(lval, rval, options){
+    return (lval === rval ? options.fn(this) : options.inverse(this));
+  })
 });

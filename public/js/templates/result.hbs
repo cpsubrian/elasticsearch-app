@@ -1,26 +1,28 @@
 <div class="result">
-    {{#if person}}
+    {{#equals type "people"}}
         Name:&nbsp;{{name}}<br/>
         About:&nbsp;{{tag_line}}<br/>
         Connections:&nbsp;{{connections}}<br/>
         Regions:<ul>{{#each regions}}
             <li>{{this}}</li>
-            {{/each}}</ul><br/>
+            {{/each}}</ul>
         Issues:<ul>{{#each issues}}
             <li>{{this}}</li>
-            {{/each}}</ul><br/>
-    {{/if}}
-    {{#if article}}
+            {{/each}}</ul>
+    <br/>
+    {{/equals}}
+    {{#equals type "articles"}}
         Title:&nbsp;{{title}}<br/>
         Body:&nbsp;{{text}}<br/>
         Date:&nbsp;{{date}}<br/>
         Sections:<ul>{{#each sections}}
             <li>{{this}}</li>
-        {{/each}}</ul><br/>
+        {{/each}}</ul>
         Tags:<ul>{{#each tags}}
             <li>{{this}}</li>
-            {{/each}}</ul><br/>
+            {{/each}}</ul>
         Url:&nbsp;{{url}}<br/>
         Fee:&nbsp;{{fee}}<br/>
-    {{/if}}
+    <br/>
+    {{/equals}}
 </div>
