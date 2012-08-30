@@ -16,7 +16,7 @@ define(function(require) {
     list: '#results',
     resultsPerPage: 10,
 
-
+    page: 1,
     from: 0,
     to: 0,
 
@@ -41,7 +41,7 @@ define(function(require) {
 
         //Set mediator properties for template
         Chaplin.mediator.numPages = Math.ceil(data.total/self.resultsPerPage);
-        Chaplin.mediator.currentPage = data.page;
+        Chaplin.mediator.currentPage = self.page;
         self.render();
 
         //Set our own data and render the page
@@ -49,7 +49,7 @@ define(function(require) {
 
 
         //Write pagination
-        self.from = (data.page - 1) * self.resultsPerPage + 1;
+        self.from = (self.page - 1) * self.resultsPerPage + 1;
         self.to = self.from + data.results.length - 1;
         $('#result-count').html('Showing ' + self.from + '-' + self.to + ' of ' + data.total);
         $('ol').attr('start', self.from);
@@ -63,8 +63,8 @@ define(function(require) {
 
     onPageClick: function(e){
       e.preventDefault();
-      var page = e.target.innerHTML;
-      Chaplin.mediator.publish('page', {page: page, resultsPerPage: this.resultsPerPage});
+      this.page = e.target.innerHTML;
+      Chaplin.mediator.publish('page', {page: this.page, resultsPerPage: this.resultsPerPage});
     }
 
   });
