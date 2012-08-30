@@ -7,8 +7,8 @@ define(function(require) {
 
   // View helpers (Handlebars in this case)
   // --------------------------------------
-  var mediator = Chaplin.mediator;
   Handlebars.registerHelper('pages', function(){
+    var mediator = Chaplin.mediator;
     var pages = mediator.numPages;
     if(pages > 1){
       var ul = "<ul>";

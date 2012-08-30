@@ -10,9 +10,6 @@ define(function(require) {
 
   var FacetsView = View.extend({
 
-    // Save the template string in a prototype property.
-    // This is overwritten with the compiled template function.
-    // In the end you might want to used precompiled templates.
     template: template,
     id: 'facet-list',
     container: '#search-options',
@@ -55,14 +52,6 @@ define(function(require) {
           self.model.set('options', data.facets);
         }
       });
-    },
-
-    render: function(){
-      FacetsView.__super__.render.apply(this, arguments);
-
-      var renderTemp = Handlebars.compile(template);
-      var self = this;
-      $(self.el).html(renderTemp(self.model.toJSON()));
     },
 
     onSelectFacet: function(e){

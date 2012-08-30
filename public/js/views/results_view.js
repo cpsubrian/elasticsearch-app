@@ -12,17 +12,12 @@ define(function(require) {
     template: template,
     id:"result-list",
     container: '#page-container',
-    listSelector: 'ol',
-    list: '#results',
-    resultsPerPage: 10,
+    listSelector: '#results',
 
+    resultsPerPage: 10,
     page: 1,
     from: 0,
     to: 0,
-
-    initialize: function(options){
-      ResultsView.__super__.initialize.apply(this, arguments);
-    },
 
     afterRender: function(){
       ResultsView.__super__.afterRender.apply(this, arguments);
@@ -52,7 +47,7 @@ define(function(require) {
         self.from = (self.page - 1) * self.resultsPerPage + 1;
         self.to = self.from + data.results.length - 1;
         $('#result-count').html('Showing ' + self.from + '-' + self.to + ' of ' + data.total);
-        $('ol').attr('start', self.from);
+        $(self.list).attr('start', self.from);
 
       });
     },

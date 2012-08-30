@@ -10,9 +10,6 @@ define(function(require) {
 
   var SearchView = View.extend({
 
-    // Save the template string in a prototype property.
-    // This is overwritten with the compiled template function.
-    // In the end you might want to used precompiled templates.
     template: template,
     id: 'search-options',
     container: '#page-container',
