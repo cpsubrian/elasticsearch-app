@@ -11,7 +11,7 @@ define(function(require) {
 
     template: template,
     id:"result-list",
-    container: '#page-container',
+    container: '#right-column',
     listSelector: '#results',
 
     resultsPerPage: 10,

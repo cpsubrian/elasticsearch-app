@@ -33,12 +33,12 @@ define(function(require) {
   Handlebars.registerHelper('facets', function(context){
     var html = '';
     for(var facet in context){
-      html += facet + '<form class="facet-form" id="' + facet + '">';
+      html += '<h3>'+facet+'</h3><form class="facet-form" id="' + facet + '">';
       for(var name in context[facet]){
         html += '<input type="checkbox" class="facet-select" value="' + name +'"';
         if(context[facet][name].selected)
           html += ' checked="checked"';
-        html += '>' + name + '&nbsp;(' + context[facet][name].count + ')</input>';
+        html += '>' + name + '&nbsp;(' + context[facet][name].count + ')</input><br/>';
       }
       html += '</form>';
     }

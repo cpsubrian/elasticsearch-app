@@ -12,9 +12,8 @@ define(function(require) {
 
     template: template,
     id: 'search-options',
-    container: '#page-container',
+    container: '#left-column',
     autoRender: true,
-    containerMethod: 'prepend',
 
     initialize: function(options){
       SearchView.__super__.initialize.apply(this, arguments);

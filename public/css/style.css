@@ -1,1 +1,30 @@
-/* Your styles here */
+body {
+    font-family: "Helvatica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333;
+}
+
+#page-container{
+    width: 90%;
+    margin: 10px auto;
+}
+
+#left-column{
+    width: 30%;
+    float: left;
+    margin: 0;
+    padding: 1em;
+}
+
+#right-column{
+    margin-left: 350px;
+    border-left: 1px solid gray;
+    padding: 1em;
+}
+
+#top{
+    padding: .5em;
+    background-color: #ddd;
+    border: 1px solid gray;
+}
