@@ -14,6 +14,7 @@
     "cantina-static": "git+ssh://git@github.com:cantina/cantina-static.git",
     "cantina-views": "git+ssh://git@github.com:cantina/cantina-views.git",
     "cantina-socketio": "git+ssh://git@github.com:cantina/cantina-socketio.git",
+    "cantina-elasticsearch": "git+ssh://git@github.com/erinlesavoy/cantina-elasticsearch.git#EL/build-better",
     "pkginfo": "~0.2.3",
     "union": "~0.3.0",
     "handlebars": "~1.0.5beta"
