@@ -1,19 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8"/>
 <title>Search Application</title>
-<link href="/css/style.css" rel="stylesheet"/>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
 </head>
 <body>
+<script src="js/bootstrap.min.js"></script>
 
-<div id="page-container">
-    <div id="top">
-        <h1>Search Application</h1>
+
+<div class="container-fluid" id="page-container">
+    <div class="row-fluid">
+        <div class="span12">
+            <h1>Search Application</h1>
+        </div>
     </div>
-
-    <div id="left-column"></div>
-    <div id="right-column"></div>
+    <div class="row-fluid">
+        <div class="span2" id="left-column"></div>
+        <div class="span10" id="right-column"></div>
+    </div>
 </div>
 
 <script src="/vendor/require-2.0.1.js"></script>

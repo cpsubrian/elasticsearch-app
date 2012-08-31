@@ -1,9 +1,4 @@
-body {
-    font-family: "Helvatica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    line-height: 20px;
-    color: #333;
-}
+
 
 #page-container{
     width: 90%;
@@ -11,25 +6,32 @@ body {
 }
 
 #left-column{
-    width: 30%;
+    /*width: 30%;
     float: left;
     margin: 0;
-    padding: 1em;
+    padding: 1em;*/
 }
 
 #right-column{
-    margin-left: 350px;
+  /*  margin-left: 350px;
     border-left: 1px solid gray;
-    padding: 1em;
+    padding: 1em;*/
 }
 
 #top{
-    padding: .5em;
+/*    padding: .5em;
     background-color: #ddd;
     border: 1px solid gray;
-    text-align: center;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    text-align: center;*/
 }
 
 .title{
     font-weight: bold;
+}
+
+input{
+    width: 100%;
+    box-sizing: border-box;
 }
