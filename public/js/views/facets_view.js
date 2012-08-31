@@ -51,6 +51,9 @@ define(function(require) {
           self.model.set('options', data.facets);
         }
       });
+      Chaplin.mediator.subscribe('facets-clear', function(){
+        self.model.set({options: null, selected: {}});
+      });
     },
 
     onSelectFacet: function(e){

@@ -72,7 +72,10 @@ define(function(require) {
         $('#sorter-list-person').css('display', 'none');
       }
 
-      this.model.set({filter: e.target.value, fromIndex: 0});
+      this.model.set({filter: e.target.value, fromIndex: 0, facets:{}});
+
+      //If filter changes, facets need to clear as they are specific to the type
+      Chaplin.mediator.publish('facets-clear', {});
     },
 
     onSelectSorter: function(e){

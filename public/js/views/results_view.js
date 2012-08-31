@@ -30,24 +30,30 @@ define(function(require) {
 
       var self = this;
       socket.on('results', function(data){
+        self.page = data.page;
 
         //Publish results for anyone else to see
         Chaplin.mediator.publish('results', data);
 
         //Set mediator properties for template
         Chaplin.mediator.numPages = Math.ceil(data.total/self.resultsPerPage);
-        Chaplin.mediator.currentPage = self.page;
+        Chaplin.mediator.currentPage = data.page;
         self.render();
 
-        //Set our own data and render the page
+        //Write pagination
+        if(data.total > 0){
+          self.from = (self.page - 1) * self.resultsPerPage + 1;
+          self.to = self.from + data.results.length - 1;
+          $('#result-count').html('Showing ' + self.from + '-' + self.to + ' of ' + data.total);
+        }else {
+          $('#result-count').html('No results found matching query');
+        }
+
+        //Set our own data
         self.collection.reset(data.results);
 
-
-        //Write pagination
-        self.from = (self.page - 1) * self.resultsPerPage + 1;
-        self.to = self.from + data.results.length - 1;
-        $('#result-count').html('Showing ' + self.from + '-' + self.to + ' of ' + data.total);
-        $(self.list).attr('start', self.from);
+        //HACK: For some reason without this call it does not render first model
+        self.renderAllItems();
 
       });
     },
